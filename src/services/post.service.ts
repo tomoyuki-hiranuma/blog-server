@@ -9,6 +9,10 @@ import {
 export class PostService {
   constructor(private prisma: PrismaService) {}
 
+  async allPosts() {
+    return this.prisma.post.findMany();
+  }
+
   async post(postWhereUniqueInput: Prisma.PostWhereUniqueInput): Promise<Post | null> {
     return this.prisma.post.findUnique({
       where: postWhereUniqueInput,
